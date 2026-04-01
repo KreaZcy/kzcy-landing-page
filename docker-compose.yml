@@ -1,0 +1,53 @@
+networks:
+  kreazcy:
+    external: true
+    name: kzcy-dev_kreazcy
+
+services:
+  kzcy-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kzcy-landing
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - GIN_MODE=release
+      - MONGO_URI=mongodb://kzcy-dev-mongodb:27017
+      - DB_NAME=kzcy_landing
+    volumes:
+      - ./frontend/dist:/app/frontend/dist
+    depends_on:
+      - mongodb
+    networks:
+      - kreazcy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  mongodb:
+    image: mongo:7
+    container_name: kzcy-landing-mongodb
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:27021:27017"
+    networks:
+      - kreazcy
+    volumes:
+      - kzcy_landing_mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: kzcy_landing
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  kzcy_landing_mongodb_data:
