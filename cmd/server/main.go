@@ -25,7 +25,7 @@ func main() {
 	// Health check (public)
 	r.GET("/health", gin.WrapH(kzcydash.HealthHandler("KreaZcy")))
 
-	// API routes
+	// API routes (public)
 	api := r.Group("/api/v1")
 	{
 		// Contact form submission
@@ -33,15 +33,15 @@ func main() {
 	}
 
 	// Dashboard/Settings routes (protected by IP whitelist)
-	dash := r.Group("/")
+	dash := r.Group("/api/v1")
 	dash.Use(router.IPFilterMiddleware(cfg, "dashboard"))
 	{
 		// Stats
-		dash.GET("/api/v1/stats", handler.StatsHandler)
+		dash.GET("/stats", handler.StatsHandler)
 
 		// Settings
-		dash.GET("/api/v1/settings", handler.GetSettings)
-		dash.PUT("/api/v1/settings", handler.UpdateSettings)
+		dash.GET("/settings", handler.GetSettings)
+		dash.PUT("/settings", handler.UpdateSettings)
 	}
 
 	// SPA serving
@@ -77,27 +77,27 @@ func main() {
 }
 
 func SetupSPA(r *gin.Engine, cfg *config.Config) {
-	spa := r.Group("/")
-	spa.Use(router.IPFilterMiddleware(cfg, "dashboard"))
-	{
-		distPath := "frontend/dist"
-		if _, err := os.Stat(distPath); err == nil {
-			r.Static("/assets", distPath+"/assets")
-			spaRoutes := []string{"", "about", "services", "contact", "admin"}
-			for _, route := range spaRoutes {
-				route := route
-				spa.GET(route, func(c *gin.Context) {
-					c.File(distPath + "/index.html")
-				})
-			}
-		} else {
-			spa.GET("/*filepath", func(c *gin.Context) {
-				c.Header("Content-Type", "text/html")
-				c.String(200, kzcydash.DevModeHTML("KreaZcy", cfg.Port, []string{
-					"/api/v1/stats",
-					"/api/v1/contact",
-				}))
+	distPath := "frontend/dist"
+	if _, err := os.Stat(distPath); err == nil {
+		// Serve static assets
+		r.Static("/assets", distPath+"/assets")
+
+		// SPA routes (no auth middleware)
+		spaRoutes := []string{"", "about", "services", "contact", "admin"}
+		for _, route := range spaRoutes {
+			route := route
+			r.GET(route, func(c *gin.Context) {
+				c.File(distPath + "/index.html")
 			})
 		}
+	} else {
+		// Dev mode fallback
+		r.GET("/*filepath", func(c *gin.Context) {
+			c.Header("Content-Type", "text/html")
+			c.String(200, kzcydash.DevModeHTML("KreaZcy", cfg.Port, []string{
+				"/api/v1/stats",
+				"/api/v1/contact",
+			}))
+		})
 	}
 }

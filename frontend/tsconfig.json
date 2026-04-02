@@ -7,11 +7,6 @@
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "resolve": {
-      "alias": {
-        "@": "./src"
-      }
-    },
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",

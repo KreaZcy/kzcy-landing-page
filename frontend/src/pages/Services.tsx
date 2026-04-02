@@ -5,50 +5,50 @@ export default function Services() {
     {
       name: 'InterakZcy',
       port: '1729',
-      description: 'WhatsApp chatbot platform with AI & n8n automation',
-      features: ['Multi-platform WhatsApp support', 'AI-powered responses', 'n8n workflow integration', 'Dashboard management'],
+      description: 'WhatsApp platform handling 10K+ messages daily. Integrates with n8n for workflow automation.',
+      features: ['Multi-platform WhatsApp', 'AI-powered responses', 'n8n workflow integration', 'React dashboard'],
       icon: '💬',
     },
     {
       name: 'RekogniZcy',
       port: '6970',
-      description: 'Authentication & authorization service',
-      features: ['JWT RS256 tokens', 'Role-based access control', 'Multi-tenant support', 'IP whitelisting'],
+      description: 'JWT auth service with RS256 tokens and automatic refresh rotation.',
+      features: ['JWT RS256', 'RBAC', 'Multi-tenant', 'IP whitelisting'],
       icon: '🔐',
     },
     {
       name: 'AfiliaZcy',
       port: '8081',
-      description: 'Affiliate tracking and commission management',
-      features: ['Multi-code support', 'Usage tracking', 'Commission calculation', 'Disbursement management'],
+      description: 'Track affiliate codes and calculate commissions automatically.',
+      features: ['Multi-code support', 'Usage tracking', 'Commission calculation'],
       icon: '📊',
     },
     {
       name: 'NotifikaZcy',
       port: '—',
-      description: 'Multi-channel notification service',
-      features: ['Email notifications', 'WhatsApp messages', 'WebSocket real-time', 'Kafka event streaming'],
+      description: 'Send notifications via Email, WhatsApp, or WebSocket. All events publish to Kafka.',
+      features: ['Email', 'WhatsApp', 'WebSocket real-time', 'Kafka streaming'],
       icon: '📢',
     },
     {
       name: 'ProgreZcy',
       port: '—',
-      description: 'Progress tracking and queue management',
+      description: 'Track progress of long-running jobs with real-time WebSocket updates.',
       features: ['Real-time updates', 'WebSocket streaming', 'SQLite persistence', 'Queue management'],
       icon: '📈',
     },
     {
       name: 'EksploraZcy',
       port: '5300',
-      description: 'RSS feed aggregator with Kafka integration',
-      features: ['Feed subscription', 'Article fetching', 'Kafka publishing', 'MongoDB storage'],
+      description: 'RSS aggregator that fetches feeds and publishes articles to Kafka.',
+      features: ['Feed subscription', 'Article fetching', 'Kafka publishing'],
       icon: '📰',
     },
     {
       name: 'AlokaZcy',
       port: '—',
-      description: 'Venue and space management',
-      features: ['Booking management', 'Calendar integration', 'Pricing rules', 'Analytics'],
+      description: 'Venue booking system with pricing rules engine and BI analytics dashboards.',
+      features: ['Booking management', 'Calendar integration', 'Pricing rules', 'Analytics dashboard'],
       icon: '🏢',
     },
   ]
@@ -81,8 +81,8 @@ export default function Services() {
       </nav>
 
       <section className="container mx-auto px-6 py-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Services</h1>
-        <p className="text-xl text-gray-300 mb-12">Production-ready microservices for every use case</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Services</h1>
+        <p className="text-xl text-gray-300 mb-12">Everything here runs in production. Nothing is a demo.</p>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -106,7 +106,8 @@ export default function Services() {
 
         {/* Libraries Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8">Shared Libraries</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Shared Libraries</h2>
+          <p className="text-gray-400 mb-8">Each library is its own Git repo. Use them independently or together.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {libraries.map((lib, i) => (
               <div key={i} className="bg-slate-800 rounded-lg p-4 hover:bg-slate-700 transition">
@@ -119,17 +120,16 @@ export default function Services() {
 
         {/* Architecture */}
         <div className="bg-slate-800 rounded-xl p-8">
-          <h2 className="text-2xl font-bold text-white mb-4">Architecture</h2>
+          <h2 className="text-2xl font-bold text-white mb-4">How It Works</h2>
           <div className="prose prose-invert max-w-none">
             <p className="text-gray-300 mb-4">
-              All services follow a consistent architecture pattern:
+              Go workspaces let us keep libraries in separate repos while developing them together:
             </p>
             <ul className="space-y-2 text-gray-300">
-              <li><strong className="text-white">Go Backend</strong> — High-performance APIs with Gin framework</li>
-              <li><strong className="text-white">React Frontend</strong> — Modern UI with Vite + TypeScript</li>
-              <li><strong className="text-white">MongoDB/PostgreSQL</strong> — Flexible data persistence</li>
-              <li><strong className="text-white">Docker</strong> — Containerized deployment</li>
-              <li><strong className="text-white">Workspace</strong> — Go workspace for unified module resolution</li>
+              <li><strong className="text-white">Go Backend</strong> — Gin framework, MongoDB/Postgres, Docker containerized</li>
+              <li><strong className="text-white">React Frontend</strong> — Vite + TypeScript, shared component libraries</li>
+              <li><strong className="text-white">Local Dev</strong> — docker-compose up spins up Mongo, Postgres, Redis, Kafka, Jaeger, Grafana</li>
+              <li><strong className="text-white">Workspace</strong> — One go.work file at the root. Services use replace directives.</li>
             </ul>
           </div>
         </div>

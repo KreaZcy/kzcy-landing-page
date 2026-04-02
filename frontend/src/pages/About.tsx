@@ -21,45 +21,48 @@ export default function About() {
 
         <div className="prose prose-invert max-w-none">
           <div className="bg-slate-800 rounded-xl p-8 mb-8">
-            <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">Origin Story</h2>
             <p className="text-gray-300 text-lg leading-relaxed">
-              KreaZcy is building the future of microservices architecture. We believe in
-              creating modular, scalable, and reusable components that can be easily composed
-              to build complex applications. Our ecosystem of services and shared libraries
-              enables teams to ship faster and more reliably.
+              KreaZcy started as internal tooling. We kept building the same authentication middleware,
+              retry logic, and config loading across different projects. Eventually, we extracted
+              these patterns into shared libraries. Then we built services around them.
+            </p>
+            <p className="text-gray-300 text-lg leading-relaxed mt-4">
+              Nothing here is theoretical. Every service runs in production. Every library solves
+              a problem we actually encountered.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="bg-slate-800 rounded-xl p-8">
-              <h3 className="text-xl font-bold text-white mb-4">🏗️ Microservices Architecture</h3>
+              <h3 className="text-xl font-bold text-white mb-4">🏗️ Go Workspace</h3>
               <p className="text-gray-300">
-                Each service is independently deployable and scalable. Build with Go and React,
-                following industry best practices for containerization and orchestration.
+                All libraries share one go.work file. Services use replace directives for standalone builds.
+                No monorepo setup required.
               </p>
             </div>
 
             <div className="bg-slate-800 rounded-xl p-8">
-              <h3 className="text-xl font-bold text-white mb-4">📚 Shared Libraries</h3>
+              <h3 className="text-xl font-bold text-white mb-4">📚 10 Shared Libraries</h3>
               <p className="text-gray-300">
-                Reusable components for authentication, middleware, utilities, and UI.
-                Stop reinventing the wheel — focus on your business logic.
+                Auth, middleware, config, utils, testing, dashboard UI. Each library is its own Git repo
+                with its own versioning. Use what you need.
               </p>
             </div>
 
             <div className="bg-slate-800 rounded-xl p-8">
-              <h3 className="text-xl font-bold text-white mb-4">⚡ Developer Experience</h3>
+              <h3 className="text-xl font-bold text-white mb-4">⚡ Local Docker Stack</h3>
               <p className="text-gray-300">
-                Hot reload, type safety, and excellent tooling. Local development with Docker Compose,
-                production-ready deployments with Helm charts.
+                Mongo, Postgres, Redis, Kafka, Jaeger, Grafana, Prometheus. One docker-compose up and
+                you have the full infra running locally.
               </p>
             </div>
 
             <div className="bg-slate-800 rounded-xl p-8">
-              <h3 className="text-xl font-bold text-white mb-4">🔧 Production-Ready</h3>
+              <h3 className="text-xl font-bold text-white mb-4">🔧 Production Battle-Tested</h3>
               <p className="text-gray-300">
-                Built with observability in mind. Metrics, tracing, logging, and monitoring
-                out of the box. Deploy with confidence.
+                Services run behind nginx with TLS. Metrics export to Prometheus. Traces go to Jaeger.
+                We use this stuff every day.
               </p>
             </div>
           </div>

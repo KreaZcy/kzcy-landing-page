@@ -23,7 +23,7 @@ func Load() *Config {
 	}
 
 	cfg = &Config{
-		Port:        getEnv("PORT", "3000"),
+		Port:        getEnv("PORT", "3001"),
 		MongoURI:    getEnv("MONGO_URI", "mongodb://localhost:27017"),
 		DBName:      getEnv("DB_NAME", "kzcy-landing"),
 		SecretKey:   getEnv("SECRET_KEY", "kzcy-landing-secret-change-in-prod"),
