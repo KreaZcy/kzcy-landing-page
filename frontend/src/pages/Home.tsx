@@ -98,33 +98,21 @@ export default function Home() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-tight tracking-tight mb-8">
-              <span className="text-gray-500">go.work</span>
-              <span className="text-white">. One workspace. Ten libraries. Seven services.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight mb-6">
+              Building the Future of
+              <span className="block text-blue-400 mt-2">Microservices</span>
             </h1>
           </div>
 
           {/* Subheading */}
           <p
-            className={`text-xl md:text-2xl text-gray-400 max-w-3xl mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+            className={`text-xl md:text-2xl text-gray-300 max-w-3xl mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            We kept extracting the same auth middleware, retry logic, and config loading across projects. Eventually, it became an ecosystem.
+            KreaZcy is a comprehensive ecosystem of microservices, shared libraries, and tools
+            for building scalable, production-ready applications.
           </p>
-
-          {/* Badge */}
-          <div
-            className={`inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-gray-400 mb-12 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            All running in production
-          </div>
 
           {/* CTA Buttons */}
           <div
@@ -134,19 +122,15 @@ export default function Home() {
           >
             <Link
               to="/services"
-              className="group px-8 py-4 bg-white text-black text-lg font-semibold rounded-full hover:scale-105 transition-all shadow-2xl shadow-white/20"
+              className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold transition"
             >
               Explore Services
-              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
-                →
-              </span>
             </Link>
             <Link
-              to="https://github.com/KreaZcy"
-              target="_blank"
-              className="px-8 py-4 border border-white/20 text-white text-lg font-medium rounded-full hover:bg-white/5 transition-all"
+              to="/contact"
+              className="px-8 py-3 border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded-lg font-semibold transition"
             >
-              View on GitHub
+              Get Started
             </Link>
           </div>
 
@@ -159,6 +143,28 @@ export default function Home() {
             <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
               <div className="w-1 h-2 bg-white/40 rounded-full animate-bounce"></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="bg-slate-800 rounded-xl p-8 text-center">
+            <div className="text-4xl font-bold text-blue-400 mb-2">7</div>
+            <div className="text-gray-300">Services</div>
+          </div>
+          <div className="bg-slate-800 rounded-xl p-8 text-center">
+            <div className="text-4xl font-bold text-blue-400 mb-2">10</div>
+            <div className="text-gray-300">Libraries</div>
+          </div>
+          <div className="bg-slate-800 rounded-xl p-8 text-center">
+            <div className="text-4xl font-bold text-blue-400 mb-2">Go</div>
+            <div className="text-gray-300">Backend</div>
+          </div>
+          <div className="bg-slate-800 rounded-xl p-8 text-center">
+            <div className="text-4xl font-bold text-blue-400 mb-2">React</div>
+            <div className="text-gray-300">Frontend</div>
           </div>
         </div>
       </section>
